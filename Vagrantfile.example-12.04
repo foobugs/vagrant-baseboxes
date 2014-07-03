@@ -5,6 +5,6 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "foobugs_ubuntu-12.04_de-mirror_chef-11.12.8-2"
-  config.vm.box_url = "./foobugs_ubuntu-12.04_de-mirror_chef-11.12.8-2.box"
+  config.vm.box = "foobugs_ubuntu-12.04_chef-11.12.8-2_de-mirror"
+  config.vm.box_url = "./foobugs_ubuntu-12.04_chef-11.12.8-2_de-mirror.box"
 end

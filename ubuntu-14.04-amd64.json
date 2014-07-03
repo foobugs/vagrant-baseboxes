@@ -60,7 +60,7 @@
   ],
   "post-processors": [
     {
-      "output": "./foobugs_ubuntu-14.04_de-mirror_chef-{{user `chef_version`}}.box",
+      "output": "./foobugs_ubuntu-14.04_chef-{{user `chef_version`}}_de-mirror.box",
       "type": "vagrant"
     }
   ],
