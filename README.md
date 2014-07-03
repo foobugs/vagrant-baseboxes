@@ -8,7 +8,6 @@ All current baseboxes are only available for Vagrant provider VirtualBox in 64 b
 
 The following baseboxes are available:
 
-- foobugs-ubuntu-10.04
 - foobugs-ubuntu-12.04
 - foobugs-ubuntu-14.04
 
