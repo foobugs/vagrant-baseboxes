@@ -1,7 +1,6 @@
 #!/bin/bash
 
 apt-get update
-apt-get upgrade --assume-yes
 apt-get upgrade --assume-yes linux-server linux-headers-server
 
 MAJOR_VERSION=""
