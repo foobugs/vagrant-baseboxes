@@ -1,0 +1,65 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<tab><wait>",
+        " ks=http://{{.HTTPIP}}:{{.HTTPPort}}/scientific-6.5/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40960,
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_os_type": "RedHat_64",
+      "http_directory": "http",
+      "iso_checksum": "a95e182f6ed14a4fb36e448d6eb19a6a59a34778",
+      "iso_checksum_type": "sha1",
+      "iso_url": "{{user `mirror`}}/6.5/x86_64/iso/SL-65-x86_64-2014-01-27-Install-DVD.iso",
+      "output_directory": "packer-scientific-6.5-x86_64-virtualbox",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_username": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "512"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ]
+      ],
+      "virtualbox_version_file": ".vbox_version",
+      "vm_name": "packer-scientific-6.5-x86_64"
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "./foobugs_scientific-6.5_{{user `box_version`}}.box",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+        "scripts/scientific/fix-slow-dns.sh",
+        "scripts/common/sshd.sh",
+        "scripts/common/vagrant.sh",
+        "scripts/common/vmtools.sh",
+        "scripts/scientific/cleanup.sh",
+        "scripts/common/minimize.sh"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "box_version": "1.0.0",
+    "mirror": "http://ftp.plusline.de/pub/scientific"
+  }
+}
