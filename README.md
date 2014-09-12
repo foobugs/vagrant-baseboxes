@@ -4,10 +4,15 @@ This repository contains [Packer](http://www.packer.io/) definitions for buildin
 
 ## Current Baseboxes
 
-All current baseboxes are only available for Vagrant provider VirtualBox in 64 bit architecture. Every basebox is configured to use German Ubuntu repository mirrors and includes an installation of [Chef Client](http://www.getchef.com/chef/install/) with minimum version 11.12.8-2. Vagrant can be instructed to install a newer version of Chef Client at runtime using the [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) plugin.
+All current baseboxes are only available for Vagrant provider VirtualBox in 64 bit architecture.
+
+Any Ubuntu basebox is configured to use German Ubuntu repository mirrors and includes an installation of [Chef Client](http://www.getchef.com/chef/install/) with minimum version 11.12.8-2. Vagrant can be instructed to install a newer version of Chef Client at runtime using the [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) plugin.
+
+Any Scientific basebox is configured to use originial repository mirrors and doesn't include Chef (or any other Configuration Management tool).
 
 The following baseboxes are available:
 
+- foobugs-scientific-6.5
 - foobugs-ubuntu-12.04
 - foobugs-ubuntu-14.04
 
@@ -27,11 +32,11 @@ Install the following software tools:
 
 1. Clone this repository with `git clone https://github.com/foobugs/vagrant-baseboxes.git`
 2. Change to project directory with `cd vagrant-baseboxes`
-3. Build with `packer build foobugs-ubuntu-14.04`
+3. Build with `packer build foobugs-ubuntu-14.04.json`
 
 ### Using a Basebox
 
-1. Copy the corresponding Vagrant template file (i.e. `cp Vagrantfile.example-14.04 Vagrantfile`)
+1. Copy the corresponding Vagrant template file (i.e. `cp Vagrantfile.example-ubuntu-14.04 Vagrantfile`)
 2. Run Vagrant with `vagrant up`
 
 ## License & Authors
